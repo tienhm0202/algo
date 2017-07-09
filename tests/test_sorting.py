@@ -1,5 +1,5 @@
 # pylint: disable=missing-docstring
-from sorting import bubble, selection, insertion
+from sorting import bubble, selection, insertion, merge_sort
 
 
 def test_bubble_sort():
@@ -55,3 +55,19 @@ def test_insertion_sort_random():
     data, time_swap = insertion(data)
     assert data == sorted(data)
     assert time_swap == len(data)
+
+
+def test_merge_sort():
+    data = [5, 4, 3, 2, 1]
+    data = merge_sort(data)
+    assert data == sorted(data)
+
+    data = [5, 4, 3, 2, 1, 6]
+    data = merge_sort(data)
+    assert data == sorted(data)
+
+
+def test_merge_sort_random():
+    data = [6, 1, 7, 8, 19, 60, -7]
+    data = merge_sort(data)
+    assert data == sorted(data)

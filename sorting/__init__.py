@@ -4,6 +4,7 @@ Practice sorting algorithm, include
 1. Bubble sort - bubble()
 2. Selection sort - selection()
 3. Insertion sort - insertion()
+4. Merge sort - merge_sort()
 """
 
 
@@ -77,3 +78,53 @@ def insertion(data):
             time_swap += 1
 
     return sorted_list, time_swap
+
+
+def merge_sort(data, start=0, end=None):
+    """
+    Sorting by merge algorithm
+
+    @param data: list of items to sort
+    """
+    if end is None:
+        end = len(data)
+
+    if start < end - 1:
+        middle = int((start + end)/ 2)
+
+        left = merge_sort(data, start, middle)
+        right = merge_sort(data, middle, end)
+        return _merge(left, right)
+
+
+def _merge(left, right):
+    """
+    Merge two ordered part in one
+    """
+    data = list()
+    left_i = 0
+    right_i = 0
+    while True:
+        left_val = None
+        if left and left_i < len(left):
+            left_val = left[left_i]
+        elif right:
+            return data + right[right_i:]
+        else:
+            return data
+
+        right_val = None
+        if right and right_i < len(right):
+            right_val = right[right_i]
+        elif left:
+            return data + left[left_i:]
+        else:
+            return data
+
+        if left_val and right_val:
+            if left_val < right_val:
+                data.append(left_val)
+                left_i += 1
+            else:
+                data.append(right_val)
+                right_i += 1

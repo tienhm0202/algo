@@ -3,6 +3,7 @@ Practice sorting algorithm, include
 
 1. Bubble sort - bubble()
 2. Selection sort - selection()
+3. Insertion sort - insertion()
 """
 
 
@@ -24,9 +25,7 @@ def bubble(data):
                 # Swap i and i + 1
                 index_i = data.index(i)
                 index_j = index_i + 1
-                data[index_i] = data[index_i] + data[index_j]
-                data[index_j] = data[index_i] - data[index_j]
-                data[index_i] = data[index_i] - data[index_j]
+                data[index_i], data[index_j] = data[index_j], data[index_i]
 
                 time_swap += 1
                 swapped = True

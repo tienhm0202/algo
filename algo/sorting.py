@@ -5,6 +5,7 @@ Practice sorting algorithm, include
 2. Selection sort - selection()
 3. Insertion sort - insertion()
 4. Merge sort - merge_sort()
+5. Quick sort - quick_sort()
 """
 
 
@@ -90,7 +91,7 @@ def merge_sort(data, start=0, end=None):
         end = len(data)
 
     if start < end - 1:
-        middle = int((start + end)/ 2)
+        middle = int((start + end) / 2)
 
         left = merge_sort(data, start, middle)
         right = merge_sort(data, middle, end)
@@ -128,3 +129,31 @@ def _merge(left, right):
             else:
                 data.append(right_val)
                 right_i += 1
+
+
+def quick_sort(data):
+    """
+    Quick sort
+
+    @param data: list of items to sort
+    """
+    if len(data) <= 1:
+        return data
+
+    middle_key = int(len(data) / 2)
+    middle_val = data[middle_key]
+
+    # Break a list in two list separated by middle value
+    bigger = list()
+    smaller = list()
+    equal = list()
+
+    for value in data:
+        if value > middle_val:
+            bigger.append(value)
+        elif value < middle_val:
+            smaller.append(value)
+        else:
+            equal.append(value)
+
+    return quick_sort(smaller) + equal + quick_sort(bigger)

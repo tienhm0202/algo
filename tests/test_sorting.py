@@ -1,5 +1,5 @@
 # pylint: disable=missing-docstring
-from sorting import bubble, selection, insertion, merge_sort
+from algo.sorting import bubble, selection, insertion, merge_sort
 
 
 def test_bubble_sort():
